@@ -360,7 +360,7 @@ impl<'d> TimerDriver<'d> {
                     self.index(),
                     Some(Self::handle_isr),
                     (self.group() * timer_idx_t_TIMER_MAX + self.index()) as *mut core::ffi::c_void,
-                    0,
+                    esp_idf_sys::ESP_INTR_FLAG_LEVEL3 as i32,
                 )
             })?;
 
